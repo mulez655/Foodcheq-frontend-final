@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>FoodCheQ | Vendor Registration</title>
+
+    <link rel="stylesheet" href="dist/css/style.css" />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+  </head>
+
+  <body class="bg-white text-slate-900">
+    <div id="navbarMount"></div>
+
+    <main class="min-h-[75vh]">
+      <section class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 py-10 lg:py-14">
+        <div class="grid grid-cols-1 lg:grid-cols-5 gap-6 items-start">
+          <div class="lg:col-span-2 rounded-3xl border border-slate-200 bg-slate-50 p-7">
+            <p class="text-sm font-semibold text-emerald-700">Become a Partner</p>
+            <h1 class="mt-2 text-3xl font-bold tracking-tight">Vendor Registration</h1>
+
+            <p class="mt-3 text-slate-600 leading-relaxed">
+              Vendors must be approved before login. Once approved, you can create products
+              and list them on the store.
+            </p>
+
+            <div class="mt-6 rounded-2xl border border-amber-200 bg-amber-50 p-4">
+              <p class="text-sm font-semibold text-amber-900">Approval required</p>
+              <p class="mt-1 text-sm text-amber-900/80">
+                After you register, your account will be pending until admin approves you.
+              </p>
+            </div>
+
+            <div class="mt-6">
+              <a
+                href="login.html"
+                class="inline-flex items-center justify-center rounded-xl border border-slate-200 px-5 py-3 text-sm font-semibold text-slate-900 hover:bg-white"
+              >
+                Already registered? Login
+              </a>
+            </div>
+          </div>
+
+          <div class="lg:col-span-3 rounded-3xl border border-slate-200 bg-white shadow-sm p-6 sm:p-8">
+            <form class="space-y-4" id="vendorRegisterForm">
+              <div>
+                <label class="text-sm font-medium text-slate-700" for="businessName">Business name</label>
+                <input
+                  id="businessName"
+                  name="businessName"
+                  required
+                  class="mt-1 w-full rounded-xl border border-slate-200 px-4 py-3 text-sm outline-none focus:border-slate-400"
+                  placeholder="Your Store Name"
+                />
+              </div>
+
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label class="text-sm font-medium text-slate-700" for="contactName">Contact name</label>
+                  <input
+                    id="contactName"
+                    name="contactName"
+                    required
+                    class="mt-1 w-full rounded-xl border border-slate-200 px-4 py-3 text-sm outline-none focus:border-slate-400"
+                    placeholder="Full name"
+                  />
+                </div>
+
+                <div>
+                  <label class="text-sm font-medium text-slate-700" for="phone">Phone</label>
+                  <input
+                    id="phone"
+                    name="phone"
+                    required
+                    class="mt-1 w-full rounded-xl border border-slate-200 px-4 py-3 text-sm outline-none focus:border-slate-400"
+                    placeholder="+234..."
+                  />
+                </div>
+              </div>
+
+              <div>
+                <label class="text-sm font-medium text-slate-700" for="email">Email</label>
+                <input
+                  id="email"
+                  name="email"
+                  type="email"
+                  required
+                  class="mt-1 w-full rounded-xl border border-slate-200 px-4 py-3 text-sm outline-none focus:border-slate-400"
+                  placeholder="vendor@email.com"
+                />
+              </div>
+
+              <div>
+                <label class="text-sm font-medium text-slate-700" for="address">Business address</label>
+                <input
+                  id="address"
+                  name="address"
+                  required
+                  class="mt-1 w-full rounded-xl border border-slate-200 px-4 py-3 text-sm outline-none focus:border-slate-400"
+                  placeholder="Street, City, State"
+                />
+              </div>
+
+              <div>
+                <label class="text-sm font-medium text-slate-700" for="password">Password</label>
+                <input
+                  id="password"
+                  name="password"
+                  type="password"
+                  required
+                  class="mt-1 w-full rounded-xl border border-slate-200 px-4 py-3 text-sm outline-none focus:border-slate-400"
+                  placeholder="••••••••"
+                />
+              </div>
+
+              <button
+                type="submit"
+                class="w-full inline-flex items-center justify-center rounded-xl bg-emerald-700 px-5 py-3 text-sm font-semibold text-white hover:bg-emerald-600"
+              >
+                Submit Vendor Application
+              </button>
+
+              <p class="text-xs text-slate-500 text-center leading-relaxed">
+                By submitting, you agree your vendor account will be pending until approved.
+              </p>
+            </form>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <div id="footerMount"></div>
+
+    <script src="js/config.js"></script>
+    <script type="module" src="js/layout.js"></script>
+    <script src="js/navbar.js"></script>
+    <script type="module" src="js/register-vendor.js"></script>
+  </body>
+</html>

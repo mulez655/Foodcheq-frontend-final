@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>FoodCheQ | Wishlist</title>
+
+    <link rel="stylesheet" href="dist/css/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+  </head>
+
+  <body class="bg-white text-slate-900">
+    <div id="navbarMount"></div>
+
+    <main class="min-h-[75vh]">
+      <section class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-10">
+        <p class="text-sm font-semibold text-emerald-700">Saved items</p>
+        <h1 class="mt-2 text-3xl font-bold tracking-tight">Your Wishlist</h1>
+        <p class="mt-2 text-slate-600">
+          Products you’ve saved for later.
+        </p>
+
+        <!-- Empty -->
+        <div id="wishlistEmpty" class="hidden mt-10">
+          <div class="rounded-3xl border border-dashed border-slate-300 bg-slate-50 p-10 text-center">
+            <p class="text-lg font-bold">Your wishlist is empty</p>
+            <p class="mt-2 text-sm text-slate-600">
+              Browse products and tap the ❤️ icon to save items.
+            </p>
+            <a
+              href="shop.html"
+              class="mt-5 inline-flex items-center justify-center rounded-xl bg-emerald-700 px-6 py-3 text-sm font-semibold text-white hover:bg-emerald-600"
+            >
+              Go to Shop
+            </a>
+          </div>
+        </div>
+
+        <!-- Grid -->
+        <div
+          id="wishlistGrid"
+          class="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"
+        ></div>
+      </section>
+    </main>
+
+    <div id="footerMount"></div>
+
+    <script src="js/config.js"></script>
+    <script type="module" src="js/auth.js"></script>
+    <script type="module" src="js/wishlist-page.js"></script>
+    <script src="js/navbar.js"></script>
+  </body>
+</html>
