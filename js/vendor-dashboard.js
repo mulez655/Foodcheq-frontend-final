@@ -45,70 +45,76 @@ function ensureModal() {
   modal.className = "hidden fixed inset-0 z-[80]";
 
   modal.innerHTML = `
-    <div class="absolute inset-0 bg-black/40"></div>
-    <div class="relative mx-auto mt-16 w-[92%] max-w-xl overflow-hidden rounded-3xl bg-white shadow-2xl border border-slate-200">
-      <div class="flex items-center justify-between px-6 py-4 border-b border-slate-200">
-        <h3 class="text-base font-bold">Add Product</h3>
-        <button type="button" id="closeAddProduct"
-          class="h-10 w-10 grid place-items-center rounded-xl border border-slate-200 hover:bg-slate-50"
-          aria-label="Close">
-          ✕
-        </button>
+    <!-- Overlay -->
+<div class="fixed inset-0 flex items-center justify-center bg-black/40 z-50">
+  <!-- Modal -->
+  <div class="relative mx-auto w-[92%] max-w-xl max-h-screen overflow-y-auto rounded-3xl bg-white shadow-2xl border border-slate-200">
+    
+    <!-- Header -->
+    <div class="flex items-center justify-between px-6 py-4 border-b border-slate-200">
+      <h3 class="text-base font-bold">Add Product</h3>
+      <button type="button" id="closeAddProduct"
+        class="h-10 w-10 grid place-items-center rounded-xl border border-slate-200 hover:bg-slate-50"
+        aria-label="Close">
+        ✕
+      </button>
+    </div>
+
+    <!-- Form -->
+    <form id="addProductForm" class="p-6 space-y-4">
+      <div>
+        <label class="text-sm font-medium text-slate-700">Product name</label>
+        <input id="pName" required
+          class="mt-1 w-full rounded-xl border border-slate-200 px-4 py-3 text-sm outline-none focus:border-slate-400"
+          placeholder="e.g. Antrodia Mushroom" />
       </div>
 
-      <form id="addProductForm" class="p-6 space-y-4">
+      <div>
+        <label class="text-sm font-medium text-slate-700">Description (optional)</label>
+        <textarea id="pDesc" rows="3"
+          class="mt-1 w-full rounded-xl border border-slate-200 px-4 py-3 text-sm outline-none focus:border-slate-400"
+          placeholder="Full description..."></textarea>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div>
-          <label class="text-sm font-medium text-slate-700">Product name</label>
-          <input id="pName" required
+          <label class="text-sm font-medium text-slate-700">Price ($)</label>
+          <input id="pPriceUsd" type="number" min="0.01" step="0.01" required
             class="mt-1 w-full rounded-xl border border-slate-200 px-4 py-3 text-sm outline-none focus:border-slate-400"
-            placeholder="e.g. Antrodia Mushroom" />
-        </div>
-
-        <div>
-          <label class="text-sm font-medium text-slate-700">Description (optional)</label>
-          <textarea id="pDesc" rows="3"
-            class="mt-1 w-full rounded-xl border border-slate-200 px-4 py-3 text-sm outline-none focus:border-slate-400"
-            placeholder="Full description..."></textarea>
-        </div>
-
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          <div>
-            <label class="text-sm font-medium text-slate-700">Price ($)</label>
-            <input id="pPriceUsd" type="number" min="0.01" step="0.01" required
-              class="mt-1 w-full rounded-xl border border-slate-200 px-4 py-3 text-sm outline-none focus:border-slate-400"
-              placeholder="e.g. 12.50" />
-            <p class="mt-1 text-xs text-slate-500">Stored in USD cents (schema B).</p>
-          </div>
-
-          <div>
-            <label class="text-sm font-medium text-slate-700">Category (optional)</label>
-            <input id="pCategory"
-              class="mt-1 w-full rounded-xl border border-slate-200 px-4 py-3 text-sm outline-none focus:border-slate-400"
-              placeholder="Tea / Powder / Extract" />
-          </div>
+            placeholder="e.g. 12.50" />
+          <p class="mt-1 text-xs text-slate-500">Stored in USD cents (schema B).</p>
         </div>
 
         <div>
-          <label class="text-sm font-medium text-slate-700">Image URL (optional)</label>
-          <input id="pImageUrl" type="url"
+          <label class="text-sm font-medium text-slate-700">Category (optional)</label>
+          <input id="pCategory"
             class="mt-1 w-full rounded-xl border border-slate-200 px-4 py-3 text-sm outline-none focus:border-slate-400"
-            placeholder="https://..." />
-          <p class="mt-1 text-xs text-slate-500">You can paste a link OR upload after creating.</p>
+            placeholder="Tea / Powder / Extract" />
         </div>
+      </div>
 
-        <div class="flex items-center justify-between gap-3">
-          <label class="inline-flex items-center gap-2 text-sm text-slate-700">
-            <input id="pAvailable" type="checkbox" checked class="rounded border-slate-300" />
-            Available
-          </label>
+      <div>
+        <label class="text-sm font-medium text-slate-700">Image URL (optional)</label>
+        <input id="pImageUrl" type="url"
+          class="mt-1 w-full rounded-xl border border-slate-200 px-4 py-3 text-sm outline-none focus:border-slate-400"
+          placeholder="https://..." />
+        <p class="mt-1 text-xs text-slate-500">You can paste a link OR upload after creating.</p>
+      </div>
 
-          <button type="submit" id="saveProductBtn"
-            class="inline-flex items-center justify-center rounded-xl bg-emerald-700 px-5 py-3 text-sm font-semibold text-white hover:bg-emerald-600">
-            Save Product
-          </button>
-        </div>
-      </form>
-    </div>
+      <div class="flex items-center justify-between gap-3">
+        <label class="inline-flex items-center gap-2 text-sm text-slate-700">
+          <input id="pAvailable" type="checkbox" checked class="rounded border-slate-300" />
+          Available
+        </label>
+
+        <button type="submit" id="saveProductBtn"
+          class="inline-flex items-center justify-center rounded-xl bg-emerald-700 px-5 py-3 text-sm font-semibold text-white hover:bg-emerald-600">
+          Save Product
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
   `;
 
   document.body.appendChild(modal);
@@ -429,3 +435,4 @@ function closeModal() {
     console.error(err);
   }
 })();
+
